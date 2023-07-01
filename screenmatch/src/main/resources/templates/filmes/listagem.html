@@ -15,15 +15,15 @@
                 <th>GÊNERO</th>
             </tr>
         </thead>
+        <tbody>
+            <tr th:each="filme : ${lista}">
+                <td th:text="${filme.nome}"></td>
+                <td th:text="${filme.duracao}"></td>
+                <td th:text="${filme.ano}"></td>
+                <td th:text="${filme.genero}"></td>
+            </tr>
+        </tbody>
     </table>
-    <tbody>
-        <tr th:each="filme : ${lista}">
-            <td th:text="${filme.nome}"></td>
-            <td th:text="${filme.duracao}"></td>
-            <td th:text="${filme.ano}"></td>
-            <td th:text="${filme.genero}"></td>
-        </tr>
-    </tbody>
 
 </form>
 </body>
