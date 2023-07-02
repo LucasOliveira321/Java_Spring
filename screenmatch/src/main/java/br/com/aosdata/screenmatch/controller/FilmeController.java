@@ -31,9 +31,11 @@ public class FilmeController {
         var filme = new Filme(dados);
         filmes.add(filme);
 
-        System.out.println(filmes);
-
-        return "filmes/formulario";
+        // O redirect é um comando do Spring que redireciona para alguma URL
+        // Neste caso ao cadastrar o filme ele vai direcionar para
+        // http://localhost:8080/filmes, que é a URL do comando carregaPaginaListagem
+        // fazendo com que seja direcionado a página de lista de filmes com a variável lista.
+        return "redirect:/filmes";
     }
 
 }
