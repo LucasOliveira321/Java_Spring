@@ -5,11 +5,13 @@
       layout:decorate="~{templates.html}"
 >
 <head>
+    <link rel="stylesheet" href="../../static/css/estilos.css" th:href="@{/css/estilos.css}">
     <title>Lista de filme</title>
 </head>
 <body>
     <div layout:fragment="conteudo">
         <h1>Lista de filmes</h1>
+        <a href="/filmes/formulario">Cadastrar Novo Filme</a>
         <table >
             <thead>
                 <tr>
@@ -17,6 +19,7 @@
                     <th>DURAÇÃO</th>
                     <th>ANO DE LANÇAMENTO</th>
                     <th>GÊNERO</th>
+                    <th>AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,10 +28,17 @@
                     <td th:text="${filme.duracao}"></td>
                     <td th:text="${filme.ano}"></td>
                     <td th:text="${filme.genero}"></td>
+                    <td>
+                        <a th:href="@{/filmes/formulario?id={id}(id=${filme.id})}">Editar</a>
+                        <form action="/filmes" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${filme.id}">
+                            <input type="submit" value="Excluir">
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <a href="/filmes/formulario">Novo</a>
     </div>
 </body>
 </html>
