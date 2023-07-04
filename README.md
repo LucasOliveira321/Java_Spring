@@ -1,6 +1,8 @@
-<h1>Java_Spring</h1>
-<text>Neste repositório está armazenado o conteúdo da aula de Java com o framework Spring, onde foi realizado um projeto web de cadastro de filmes e uma página que aparece os filmes cadastrados, conectando com o banco de dados PostgreSql.</text>
-<h2>Técnologias utilizadas</h2>
+<h1>Java Spring</h1>
+<h6>Neste repositório está armazenado o conteúdo da aula de Java com o framework Spring.</h6>
+
+<h2>Aula de Java Spring Web</h2>
+<h4>Técnologias utilizadas</h4>
 <ul>
   <li>SPRING</li>
   <li>JPA</li>
@@ -9,5 +11,34 @@
   <li>HMTL</li>
   <li>CSS</li>
   <li>POSTGRESQL</li>
+  <li>METODOS DE CRUD</li>  
+</ul>
+
+<h2>Aula de Java Spring Boot</h2>
+<h4>Técnologias utilizadas</h4>
+<ul>
+  <li>SPRING</li>
+  <li><details>
+      <summary>INSOMNIA</summary>
+      <p>Aplicativo utilizado para facilitar nos testes em HTTP, já que neste projeto o objetivo principal é criar somente uma API Rest sem interface gráfica, portanto utilizamos o INSOMNIA para validar os métodos do Controller.</p>
+  </li></details>
+  <li>JPA</li>
+  <li><details>
+      <summary>FLYWAY</summary>
+      <p>Framework utilizado para fazer o versionamento de script dos arquivos SQL, onde existe um padrão de nomenclatura de diretórios e arquivos que o mesmo identifica automaticamente e versiona o script.</p>
+  </li></details>
+  <li>POSTGRESQL</li>
+  <li><details>
+      <summary>BEAN VALIDATION</summary>
+      <p>Framework utilizado para fazer a validação dos dados enviados ao banco de dados, ele ajuda a ser menos verboso o código e tem algumas validações prontas bem específicas como @Email, @NotBlank, @NotNull e caso queira     criar em padrão específico é possível utilizar o REGEX com @Pattern(regexp = "\\d{4,6}".</p>
+      <p>A documentação oficioal deste código pode ser encontrada no site: https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints , segue abaixo a imagem mostrando como foi utilizado em uma das classes java o BEAN VALIDATION.</p>
+      <img>![image](https://github.com/LucasOliveira321/Java_Spring/assets/107444159/70db922c-cdaa-4a53-9cf9-6caf6c60b954)</img>
+  </li></details>
+  <li><details>
+      <summary>LOMBOK</summary>
+      <p>Framework utilizado para deixar o código menos verboso, criando GETTER's e CONSTRUCTOR's como mostra na imagem abaixo como foi aplicado em um dos objetos.</p>
+      <img>![image](https://github.com/LucasOliveira321/Java_Spring/assets/107444159/8757ad7e-735d-4c80-a452-0e204c52528c)
+</img>
+  </li></details>
   <li>METODOS DE CRUD</li>  
 </ul>
