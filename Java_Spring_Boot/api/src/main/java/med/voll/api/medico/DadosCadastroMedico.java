@@ -22,7 +22,8 @@ public record DadosCadastroMedico(
         Especialidade especialidade,
         @NotNull
         @Valid
-        DadosEndereco endereco)
+        DadosEndereco endereco
+)
 {
     // Essas anotações são do BEAN VALIDATION importadas no site do Start Spring, onde podemos utilizar estes comandos para validar condicionais para armazenar no DB
     // sem precisar ficar colocando no código condicionais como IF e Else
