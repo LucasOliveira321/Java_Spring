@@ -40,5 +40,10 @@
       <img>![image](https://github.com/LucasOliveira321/Java_Spring/assets/107444159/8757ad7e-735d-4c80-a452-0e204c52528c)
 </img>
   </li></details>
-  <li>METODOS DE CRUD</li>  
+  <li><details>
+      <summary>STACK TRACE</summary>
+      <p>Método utilizado para o tratamento de erros do Spring, ele pode ser encontrado na documentação oficial, e serve para que em caso de erro em alguma requisição do HTML ele não retorne o trace, que traz informações sensíveis referente ao código criado o que não seria interessante aparecer para o usuário que está utilizando a API desenvolvida no curso em questão.</p>
+    <p>Mais informações sobre este método e outros, podem ser encontrados neste link: https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.server.server.error.include-stacktrace</p>
+  </li></details>
+  <li>METODOS DE CRUD</li>
 </ul>
