@@ -17,17 +17,14 @@
 <h2>Aula de Java Spring Boot</h2>
 <h4>Técnologias utilizadas</h4>
 <ul>
-  <li>SPRING</li>
   <li><details>
       <summary>INSOMNIA</summary>
       <p>Aplicativo utilizado para facilitar nos testes em HTTP, já que neste projeto o objetivo principal é criar somente uma API Rest sem interface gráfica, portanto utilizamos o INSOMNIA para validar os métodos do Controller.</p>
   </li></details>
-  <li>JPA</li>
   <li><details>
       <summary>FLYWAY</summary>
       <p>Framework utilizado para fazer o versionamento de script dos arquivos SQL, onde existe um padrão de nomenclatura de diretórios e arquivos que o mesmo identifica automaticamente e versiona o script.</p>
   </li></details>
-  <li>POSTGRESQL</li>
   <li><details>
       <summary>BEAN VALIDATION</summary>
       <p>Framework utilizado para fazer a validação dos dados enviados ao banco de dados, ele ajuda a ser menos verboso o código e tem algumas validações prontas bem específicas como @Email, @NotBlank, @NotNull e caso queira     criar em padrão específico é possível utilizar o REGEX com @Pattern(regexp = "\\d{4,6}".</p>
@@ -54,5 +51,12 @@
     <li>Argon2</li>
     <li>PBKDF2</li>
   </li></details>
+  <li><details>
+      <summary>JSON WEB TOKEN</summary>
+      <p>É uma biblioteca, utilizada para gerar token's em JSON.</p>
+      <p>Documentação oficial: https://jwt.io/</p>
+  </li></details>
   <li>METODOS DE CRUD</li>
+  <li>POSTGRESQL</li>
+  <li>JPA</li>
 </ul>
