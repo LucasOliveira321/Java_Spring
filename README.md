@@ -56,6 +56,7 @@
       <p>É uma biblioteca, utilizada para gerar token's em JSON.</p>
       <p>Documentação oficial: https://jwt.io/</p>
   </li></details>
+  <li>CONCEITOS SOLID</li>
   <li>METODOS DE CRUD</li>
   <li>POSTGRESQL</li>
   <li>JPA</li>
