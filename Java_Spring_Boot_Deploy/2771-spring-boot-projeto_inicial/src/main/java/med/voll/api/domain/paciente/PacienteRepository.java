@@ -20,16 +20,4 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long> {
             p.id = :idPaciente
     """)
     boolean findAllByAtivoTrueById(Long idPaciente);
-
-    @Query("""
-    select
-        c.data
-    from
-        Consulta c
-    where 
-        c.paciente = : idPaciente
-    and 
-        between (:primeiroHorario, :ultimoHorario)
-    """)
-    boolean existsByPacienteIdAndDataBetween(Long idPaciente, LocalDateTime primeiroHorario, LocalDateTime ultimoHorario);
 }
