@@ -24,10 +24,6 @@ public class Pedido {
 	private String urlDaImagem;
 	private String descricao;
 	
-	
-	
-	
-	
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
