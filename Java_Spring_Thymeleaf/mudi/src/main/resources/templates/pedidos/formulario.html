@@ -8,28 +8,39 @@
 			<div class="jumbotron mb-0">
 					<h1 class="display-4">Novo Pedido</h1>
 			</div>
-			<form action="/pedido/novo" method="POST" >
-				<div>
-					<label for="nomeProduto">Produto</label>
-					<input name="nomeProduto" placeholder="Nome do produto"/>
-					<small>Informe qual o nome do produto.</small>
-				</div>
-				<div>
-					<label for="urlProduto">Url</label>
-					<input name="urlProduto" placeholder="Url do produto"/>
-					<small>Procure em um site o produto que você deseja e cole a url da pág. aqui.</small>
-				</div>
-				<div>
-					<label for="urlImagem">Url</label>
-					<input name="urlImagem" placeholder="Url da imagem"/>
-					<small>Copie uma url de uma imagem boa.</small>
-				</div>
-				<div>
-					<label for="descricao">Descricao</label>
-					<textarea name="descricao" placeholder="Adicione detalhes importantes"></textarea>
-				</div>
-				<button type="submit">Cadastrar</button>
-			</form>
+			<div class="card mt-3">
+				<form th:object="${requisicaoNovoPedido}" action="/pedido/novo" class="card-body" method="POST" >
+					<div class="form-group">
+						<label for="nomeProduto">Produto</label>
+						<input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do produto"/>
+						<small>Informe qual o nome do produto.</small>
+						<div class="invalid-feedback" th:errors="*{nomeProduto}">
+							Informar o nome do produto!
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlProduto">Url</label>
+						<input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Url do produto"/>
+						<small>Procure em um site o produto que você deseja e cole a url da pág. aqui.</small>
+						<div class="invalid-feedback" th:errors="*{urlProduto}">
+							Informar a url do produto!
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlImagem">Url</label>
+						<input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="Url da imagem"/>
+						<small>Copie uma url de uma imagem boa.</small>
+						<div class="invalid-feedback" th:errors="*{urlImagem}">
+							Informar a url da imagem!
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="descricao">Descricao</label>
+						<textarea th:field="*{descricao}" class="form-control" placeholder="Adicione detalhes importantes"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+				</form>
+			</div>	
 		</div>
 	</body>
 </html>
