@@ -17,23 +17,23 @@ public class PedidoController {
 	
 	@Autowired
 	private PedidoRepository repository;
-	
+
 	
 	@GetMapping("formulario")
-	public String formulario(@Valid RequisicaoNovoPedido requisicaoNovoPedido) {
+	public String formulario(RequisicaoNovoPedido requisicao) {
 		return "pedidos/formulario";
 	}
 	
 	@PostMapping("novo")
-	public String novo(@Valid RequisicaoNovoPedido requisicaoNovoPedido, BindingResult resultado) {
+	public String novo(@Valid RequisicaoNovoPedido requisicao, BindingResult resultado) {
 		if(resultado.hasErrors()) {
 			return "pedidos/formulario";
 		}
 		
-		Pedido pedido = requisicaoNovoPedido.toPedido();
+		Pedido pedido = requisicao.toPedido();
 		
 		repository.save(pedido);
 		
-		return "pedidos/formulario";
+		return "redirect:/home";
 	}
 }
