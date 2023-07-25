@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.springData.service.CrudCargoService;
 import com.example.springData.service.CrudFuncionarioService;
 import com.example.springData.service.CrudUnidadeService;
+import com.example.springData.service.RelatoriosService;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
@@ -15,12 +16,14 @@ public class DemoApplication implements CommandLineRunner{
 	private	final CrudCargoService crudCargoService;
 	private	final CrudFuncionarioService crudFuncionarioService;
 	private	final CrudUnidadeService crudUnidadeService;
+	private	final RelatoriosService relatoriosService;
 	
 	
-	public DemoApplication(CrudCargoService cargo, CrudFuncionarioService funcionario,CrudUnidadeService unidade ) {
+	public DemoApplication(CrudCargoService cargo, CrudFuncionarioService funcionario,CrudUnidadeService unidade, RelatoriosService relatoriosService) {
 		this.crudCargoService = cargo;
 		this.crudFuncionarioService = funcionario;
 		this.crudUnidadeService = unidade;
+		this.relatoriosService = relatoriosService;
 	}
 
 	public static void main(String[] args) {
@@ -37,6 +40,7 @@ public class DemoApplication implements CommandLineRunner{
 			System.out.println("1 - Cargo");
 			System.out.println("2 - Funcionario");
 			System.out.println("3 - Unidade");
+			System.out.println("4 - Relatorios");
 			
 			int action = scanner.nextInt();
 			
@@ -50,6 +54,9 @@ public class DemoApplication implements CommandLineRunner{
 				case 3:
 					crudUnidadeService.inicial(scanner);
 					break;	
+				case 4:
+					relatoriosService.inicial(scanner);
+					break;		
 				default:
 					valida = false;
 			}			

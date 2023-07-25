@@ -7,12 +7,15 @@ import com.example.springData.orm.Unidade;
 import com.example.springData.repository.UnidadeRepository;
 
 
-
 @Service
 public class CrudUnidadeService{
 	
 	private Boolean valida;
-	private UnidadeRepository repository;
+	private final UnidadeRepository repository;
+	
+	public CrudUnidadeService(UnidadeRepository repository) {
+		this.repository = repository;
+	}
 	
 	public void inicial(Scanner scanner) {
 		
@@ -21,10 +24,10 @@ public class CrudUnidadeService{
 		while(valida) {
 			System.out.println("Qual acao de cargo deseja executar");
 			System.out.println("0 - Sair");
-			System.out.println("1 - Salvar Cargo");
-			System.out.println("2 - Atualizar Cargo");
-			System.out.println("3 - Visualizar Cargos");
-			System.out.println("4 - Deletar Cargos");
+			System.out.println("1 - Salvar Unidade");
+			System.out.println("2 - Atualizar Unidade");
+			System.out.println("3 - Visualizar Unidades");
+			System.out.println("4 - Deletar Unidade");
 			
 			int selecao = scanner.nextInt();
 			

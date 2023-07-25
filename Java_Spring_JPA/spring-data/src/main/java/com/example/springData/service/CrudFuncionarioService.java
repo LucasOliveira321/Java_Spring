@@ -7,13 +7,20 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 import com.example.springData.orm.Funcionario;
+import com.example.springData.repository.CargoRepository;
 import com.example.springData.repository.FuncionarioRepository;
 
 @Service
 public class CrudFuncionarioService{
 	
 	private Boolean valida;
-	private FuncionarioRepository repository;
+	private final FuncionarioRepository repository;
+	private final CargoRepository cargoRepository;
+	
+	public CrudFuncionarioService(FuncionarioRepository repository, CargoRepository cargoRepository) {
+		this.repository = repository;
+		this.cargoRepository = cargoRepository;
+	}
 	
 	public void inicial(Scanner scanner) {
 		
@@ -59,11 +66,17 @@ public class CrudFuncionarioService{
 		System.out.println("Informar salario");
 		BigDecimal salario = scanner.nextBigDecimal();
 		
+		System.out.println("Informar id do cargo");
+		Integer idCargo = scanner.nextInt();
+		
 		Funcionario fun = new Funcionario();
 		fun.setNome(nome);
 		fun.setCpf(cpf);
 		fun.setSalario(salario);
+		fun.setCargo(cargoRepository.findById(idCargo));
 		fun.setDataContratacao(LocalDate.now());
+		
+		repository.save(fun);
 		
 		System.out.println("Funcionario Cadastrado");	
 	}

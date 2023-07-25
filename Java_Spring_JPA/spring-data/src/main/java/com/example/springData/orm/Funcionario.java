@@ -3,6 +3,8 @@ package com.example.springData.orm;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import jakarta.persistence.Entity;
@@ -79,5 +81,8 @@ public class Funcionario {
 	public String toString() {
 		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario
 				+ ", dataContratacao=" + dataContratacao + "]";
+	}
+	public void setCargo(Optional<Cargo> cargo) {
+		this.cargo = cargo.get();
 	}
 }
