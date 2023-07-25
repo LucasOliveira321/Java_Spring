@@ -1,6 +1,7 @@
-package com.example.demo.repository;
+package com.example.springData.repository;
 
-import com.example.demo.orm.Cargo;
+import com.example.springData.orm.Cargo;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

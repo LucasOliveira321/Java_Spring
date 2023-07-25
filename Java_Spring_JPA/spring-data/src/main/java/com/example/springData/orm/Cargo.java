@@ -1,4 +1,4 @@
-package com.example.demo.orm;
+package com.example.springData.orm;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +28,11 @@ public class Cargo {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	@Override
+	public String toString() {
+		return "Cargo: " + this.descricao;
 	}
 	
 }
