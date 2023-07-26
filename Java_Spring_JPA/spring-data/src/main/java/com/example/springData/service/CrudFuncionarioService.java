@@ -5,6 +5,10 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.springData.orm.Funcionario;
 import com.example.springData.orm.Unidade;
@@ -48,7 +52,7 @@ public class CrudFuncionarioService{
 					atualizarFuncionario(scanner);
 					break;
 				case 3:
-					visualizar();
+					visualizar(scanner);
 					break;
 				case 4:
 					deletar(scanner);
@@ -112,8 +116,17 @@ public class CrudFuncionarioService{
 		}
 	}
 
-	private void visualizar() {
-		Iterable<Funcionario> fun = repository.findAll();
+	private void visualizar(Scanner scanner) {
+		System.out.println("Qual pagina você deseja visualizar");
+		Integer pagina = scanner.nextInt();
+		
+		Pageable pageable = PageRequest.of(pagina, 5, Sort.by(Sort.Direction.ASC, "nome"));
+		Page<Funcionario> fun = repository.findAll(pageable);
+		
+		System.out.println(fun);
+		System.out.println("Pagina atual " + fun.getNumber());
+		System.out.println("Total elementos " + fun.getTotalElements());
+		
 		fun.forEach(funcionario -> System.out.println(funcionario));
 	}
 

@@ -3,20 +3,26 @@ package com.example.springData.repository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import com.example.springData.orm.Funcionario;
 
 
 @Repository
-public interface FuncionarioRepository extends CrudRepository<Funcionario, Integer> {
+public interface FuncionarioRepository extends PagingAndSortingRepository<Funcionario, Integer> {
 	
 	// Derived Queries
 	
 	List<Funcionario> findByNome(String nome);
 	List<Funcionario> findByNomeAndSalarioGreaterThanAndDataContratacao(String nome, BigDecimal salario, LocalDate data);
+	Optional<Funcionario> findById(Integer id);
+	void save(Funcionario fun);
+	void deleteById(Integer id);
+	Page<Funcionario> findAll();
 	
 	//JPQL - Utiliza as tipagens abaixo
 	
@@ -32,12 +38,12 @@ public interface FuncionarioRepository extends CrudRepository<Funcionario, Integ
 			""")
 	Integer findIdByNome(String nome);
 	
-	//QUERY nativa do SQL
-	
+	//QUERY - native queries do SQL
 	
 	@Query(value = "select * from funcionario f where f.data_contratacao >= :data",
 		   nativeQuery = true)
 	List<Funcionario> findDataContratacaoMaior(LocalDate data);
+	
 	
 	
 }
