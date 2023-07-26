@@ -6,14 +6,17 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import com.example.springData.orm.Funcionario;
+import com.example.springData.orm.FuncionarioProjecao;
 
 
 @Repository
-public interface FuncionarioRepository extends PagingAndSortingRepository<Funcionario, Integer> {
+public interface FuncionarioRepository extends PagingAndSortingRepository<Funcionario, Integer>,
+	JpaSpecificationExecutor<Funcionario>{
 	
 	// Derived Queries
 	
@@ -44,6 +47,6 @@ public interface FuncionarioRepository extends PagingAndSortingRepository<Funcio
 		   nativeQuery = true)
 	List<Funcionario> findDataContratacaoMaior(LocalDate data);
 	
-	
-	
+	@Query(value = "select f.id, f.nome, f.salario from funcionario f", nativeQuery = true)
+	List<FuncionarioProjecao> findFuncionarioSalario();
 }

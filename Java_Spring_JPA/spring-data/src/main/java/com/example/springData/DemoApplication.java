@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.springData.service.CrudCargoService;
 import com.example.springData.service.CrudFuncionarioService;
 import com.example.springData.service.CrudUnidadeService;
+import com.example.springData.service.RelatorioFuncionarioDinamico;
 import com.example.springData.service.RelatoriosService;
 
 @SpringBootApplication
@@ -17,13 +18,15 @@ public class DemoApplication implements CommandLineRunner{
 	private	final CrudFuncionarioService crudFuncionarioService;
 	private	final CrudUnidadeService crudUnidadeService;
 	private	final RelatoriosService relatoriosService;
+	private	final RelatorioFuncionarioDinamico relatorioFuncionarioDinamico;
 	
 	
-	public DemoApplication(CrudCargoService cargo, CrudFuncionarioService funcionario,CrudUnidadeService unidade, RelatoriosService relatoriosService) {
+	public DemoApplication(CrudCargoService cargo, CrudFuncionarioService funcionario,CrudUnidadeService unidade, RelatoriosService relatoriosService, RelatorioFuncionarioDinamico relatorioFuncionarioDinamico) {
 		this.crudCargoService = cargo;
 		this.crudFuncionarioService = funcionario;
 		this.crudUnidadeService = unidade;
 		this.relatoriosService = relatoriosService;
+		this.relatorioFuncionarioDinamico = relatorioFuncionarioDinamico;
 	}
 
 	public static void main(String[] args) {
@@ -41,6 +44,7 @@ public class DemoApplication implements CommandLineRunner{
 			System.out.println("2 - Funcionario");
 			System.out.println("3 - Unidade");
 			System.out.println("4 - Relatorios");
+			System.out.println("5 - Relatorio Funcionario Dinâmico");
 			
 			int action = scanner.nextInt();
 			
@@ -56,7 +60,10 @@ public class DemoApplication implements CommandLineRunner{
 					break;	
 				case 4:
 					relatoriosService.inicial(scanner);
-					break;		
+					break;	
+				case 5:
+					relatorioFuncionarioDinamico.inicial(scanner);
+					break;
 				default:
 					valida = false;
 			}			
