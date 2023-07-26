@@ -12,9 +12,32 @@ import com.example.springData.orm.Funcionario;
 
 @Repository
 public interface FuncionarioRepository extends CrudRepository<Funcionario, Integer> {
-	List<Funcionario> findByNome(String nome);
 	
-//	@Query("SELECT f FROM Funcionario f	WHERE f.nome = :nome AND f.salario >= :salario AND f.dataContratacao = :data;")
-//	List<Funcionario> findNomeSalarioMaiorDataContratacao(String nome, BigDecimal salario, LocalDate data);
+	// Derived Queries
+	
+	List<Funcionario> findByNome(String nome);
 	List<Funcionario> findByNomeAndSalarioGreaterThanAndDataContratacao(String nome, BigDecimal salario, LocalDate data);
+	
+	//JPQL - Utiliza as tipagens abaixo
+	
+	@Query("SELECT f FROM Funcionario f	WHERE f.nome = :nome AND f.salario >= :salario AND f.dataContratacao = :data")
+	List<Funcionario> findNomeSalarioMaiorDataContratacao(String nome, BigDecimal salario, LocalDate data);
+	@Query("""
+			select
+				f.id
+			from
+				Funcionario f
+			where 
+				f.nome = :nome
+			""")
+	Integer findIdByNome(String nome);
+	
+	//QUERY nativa do SQL
+	
+	
+	@Query(value = "select * from funcionario f where f.data_contratacao >= :data",
+		   nativeQuery = true)
+	List<Funcionario> findDataContratacaoMaior(LocalDate data);
+	
+	
 }

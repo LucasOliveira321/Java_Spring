@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 import com.example.springData.orm.Funcionario;
+import com.example.springData.orm.Unidade;
 import com.example.springData.repository.CargoRepository;
 import com.example.springData.repository.FuncionarioRepository;
+import com.example.springData.repository.UnidadeRepository;
 
 @Service
 public class CrudFuncionarioService{
@@ -16,10 +18,12 @@ public class CrudFuncionarioService{
 	private Boolean valida;
 	private final FuncionarioRepository repository;
 	private final CargoRepository cargoRepository;
+	private final UnidadeRepository unidadeRepository;
 	
-	public CrudFuncionarioService(FuncionarioRepository repository, CargoRepository cargoRepository) {
+	public CrudFuncionarioService(FuncionarioRepository repository, CargoRepository cargoRepository, UnidadeRepository unidadeRepository) {
 		this.repository = repository;
 		this.cargoRepository = cargoRepository;
+		this.unidadeRepository = unidadeRepository;
 	}
 	
 	public void inicial(Scanner scanner) {
@@ -56,7 +60,7 @@ public class CrudFuncionarioService{
 		}
 	}
 	
-	public void salvar(Scanner scanner) {
+	private void salvar(Scanner scanner) {
 		System.out.println("Informar nome");
 		String nome = scanner.next();
 		
@@ -81,7 +85,7 @@ public class CrudFuncionarioService{
 		System.out.println("Funcionario Cadastrado");	
 	}
 	
-	public void atualizarFuncionario(Scanner scanner) {
+	private void atualizarFuncionario(Scanner scanner) {
 		System.out.println("Informar id");
 		Integer id = scanner.nextInt();
 		Optional<Funcionario> funcionario = repository.findById(id);
@@ -108,12 +112,12 @@ public class CrudFuncionarioService{
 		}
 	}
 
-	public void visualizar() {
+	private void visualizar() {
 		Iterable<Funcionario> fun = repository.findAll();
 		fun.forEach(funcionario -> System.out.println(funcionario));
 	}
 
-	public void deletar(Scanner scanner) {
+	private void deletar(Scanner scanner) {
 		System.out.println("Informar o id do funcionario");
 		Integer id = scanner.nextInt();
 		
