@@ -3,6 +3,7 @@
   <groupId>br.com.alura</groupId>
   <artifactId>loja</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
 	  <build>
 	    <plugins>
 	        <plugin>
@@ -17,17 +18,17 @@
 	</build>
 	<dependencies>
 		
-	    <dependency>
-	        <groupId>org.hibernate</groupId>
-	        <artifactId>hibernate-entitymanager</artifactId>
-	        <version>5.4.24.Final</version>
-	    </dependency>
-	    
-	    <dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <version>1.4.200</version>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.4.24.Final</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.200</version>
+		</dependency>
 	</dependencies>
+  
 </project>
