@@ -1,7 +1,6 @@
 package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,13 +23,21 @@ public class ItemPedido {
 	@ManyToOne
 	private Produto produto;
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	public ItemPedido(){}
 	
 	public ItemPedido(int quantidade, Pedido pedido, Produto produto) {
 		this.quantidade = quantidade;
 		this.pedido = pedido;
 		this.produto = produto;
-		
+		this.preco = produto.getPreco();
 	}
 
 	public Long getId() {

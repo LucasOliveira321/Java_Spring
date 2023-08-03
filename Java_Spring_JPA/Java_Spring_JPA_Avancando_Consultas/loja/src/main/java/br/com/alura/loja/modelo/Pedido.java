@@ -2,6 +2,7 @@ package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,12 +25,37 @@ public class Pedido {
 	
 	@ManyToOne
 	private Clientes cliente;
-	@OneToMany
-	private List<ItemPedido> itens;
+	/**
+	 * Ao criar a relação bidirecional(onde é criado a 3ª tabela em uma relação n*n)
+	 * é preciso informar do lado 'ToMany' o mappedBy = "nome do atributo que está conectando".
+	 * 
+	 * E como boa prática é bom sempre iniciar a lista para não ter que 
+	 * criar if's no decorrer do projeto para verificar se a lista foi iniciada.
+	 */
+	@OneToMany(mappedBy = "pedido")
+	private List<ItemPedido> itens = new ArrayList<>();
+	
+	
 	
 	public Pedido(Clientes cliente) {
 		this.cliente = cliente;
 	}
+	
+	/**
+	 * Método utilitário adiciona este pedido ao item
+	 * e adiciona o item vinculado a este pedido
+	 * a lista de itens deste mesmo pedido.
+	 * */
+	public void adicionarItem(ItemPedido item) {
+		item.setPedido(this);
+		this.itens.add(item);
+	}
+	
+	
+	
+	
+	
+	
 
 	public Long getId() {
 		return id;
