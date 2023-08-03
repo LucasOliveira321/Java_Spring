@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "valor_total")
 	private BigDecimal valorTotal;
 	private LocalDate data = LocalDate.now();
 	
@@ -29,10 +31,14 @@ public class Pedido {
 	 * Ao criar a relação bidirecional(onde é criado a 3ª tabela em uma relação n*n)
 	 * é preciso informar do lado 'ToMany' o mappedBy = "nome do atributo que está conectando".
 	 * 
+	 * Cascade faz com que a entidade ItemPedido só exista com uma outra
+	 * entidade Pedido, caso a entidade Pedido seja excluída a entidade ItemPedido
+	 * também será excluída.
+	 * 
 	 * E como boa prática é bom sempre iniciar a lista para não ter que 
 	 * criar if's no decorrer do projeto para verificar se a lista foi iniciada.
 	 */
-	@OneToMany(mappedBy = "pedido")
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
 	private List<ItemPedido> itens = new ArrayList<>();
 	
 	
