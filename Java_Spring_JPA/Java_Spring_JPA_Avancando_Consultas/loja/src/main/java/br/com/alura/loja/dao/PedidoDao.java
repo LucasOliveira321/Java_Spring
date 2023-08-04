@@ -44,4 +44,13 @@ public class PedidoDao {
 		return em.createQuery(jpql, RelatorioDeVendasVo.class).getResultList();
 	}
 	
+	// Para carregar uma entidade com os atributos FETCH LAZY
+	// podemos criar um método específico para esse carregamento
+	// onde vamos informar no SELECT antes do WHERE a informação
+	// JOIN FETCH entidade.atributoASerChamado no caso abaixo é
+	// p.cliente
+	public Pedido buscarPedidoComCliente(Long id) {
+		return em.createQuery("SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = :id", Pedido.class).setParameter("id", id).getSingleResult();
+	}
+	
 }

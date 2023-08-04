@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,22 @@ public class Pedido {
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 	private LocalDate data = LocalDate.now();
 	
-	@ManyToOne
+	/**
+	 * Todo relacionamento com final "ToOne" é realizado o join
+	 * na classe que está sendo vinculada e assim se repete na
+	 * próxima classe, se tiver outro relacionamento "ToOne"
+	 * é realizado tambem o join criando um efeito cascata
+	 * que dependento da ramificação pode ser realizado um SELECT
+	 * por de baixos dos panos muito grande, tornando assim 
+	 * mais demorado o processo, mesmo se for instanciar uma
+	 * Entidade para buscar apenas um atributo.
+	 * Portanto como boa prática é importante colocar o método
+	 * fetch = FetchTupe.LAZY que vai quebrar este efeito e deixar
+	 * mais performático o código
+	 * 
+	 * */
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Clientes cliente;
 	/**
 	 * Ao criar a relação bidirecional(onde é criado a 3ª tabela em uma relação n*n)
@@ -55,12 +71,6 @@ public class Pedido {
 		this.itens.add(item);
 		this.valorTotal = this.valorTotal.add(item.getValor());
 	}
-	
-	
-	
-	
-	
-	
 
 	public Long getId() {
 		return id;
