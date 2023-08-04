@@ -2,19 +2,30 @@ package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "produtos")
+// A notação Inheritance serve para identificar as
+// classes que extende da classe produto, deixando
+// assim no banco de dados uma unica tabela "SINGLE_TABLE"
+// as classes que extende de Produto precisa ter a notação
+// @Entity também.
+
+// Agora se o objetivo for ter separado as classes que
+// extende de Produto separado em tabelas diferentes no 
+// banco de dados e preciso alterar a estratégia para
+// (strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Produto {
 
 	@Id
