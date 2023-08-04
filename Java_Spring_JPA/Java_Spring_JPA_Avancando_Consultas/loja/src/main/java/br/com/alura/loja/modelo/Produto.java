@@ -25,6 +25,9 @@ import javax.persistence.Table;
 // extende de Produto separado em tabelas diferentes no 
 // banco de dados e preciso alterar a estratégia para
 // (strategy = InheritanceType.JOINED)
+// desta maneira o banco fica mais organizado
+// mas acrescenta no SELECT o JOIN que pode atrasar
+// na performance
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Produto {
 
